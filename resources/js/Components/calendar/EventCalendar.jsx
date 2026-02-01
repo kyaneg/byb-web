@@ -450,13 +450,18 @@ export default function EventCalendar({
                                     </div>
                                 )}
 
-                                {event.organizer && (
+                                {event.organizers && event.organizers.length > 0 && (
                                     <div className="mt-1 text-[11px] text-brand-muted">
                                         <span className="font-semibold">
                                             {t('common.eventOrganizedBy')}
                                         </span>{' '}
                                         <span className="text-slate-700">
-                                            {event.organizer.name}
+                                            {event.organizers.map((org, i) => (
+                                                <span key={org.id}>
+                                                    {org.name}
+                                                    {i < event.organizers.length - 1 ? ', ' : ''}
+                                                </span>
+                                            ))}
                                         </span>
                                     </div>
                                 )}

@@ -291,7 +291,7 @@ class EventApiClient
                 'type' => $event['event_type'] ?? null,
                 'industry' => $event['industry'] ?? null,
                 'country' => $event['country'] ?? null,
-                'organizer' => $this->normalizeOrganizer($event['organizer'] ?? null, $assetBase),
+                'organizers' => $this->normalizeOrganizers($event['organizers'] ?? [], $assetBase),
                 'venue' => $event['venue'] ?? null,
                 'tags' => $event['tags'] ?? [],
                 'googleMapsUrl' => $event['google_maps_url'] ?? null,
@@ -329,26 +329,27 @@ class EventApiClient
     }
 
     /**
-     * Normalize organizer data with image URL processing.
+     * Normalize organizers data with image URL processing.
      *
-     * @param  mixed  $organizer
+     * @param  array<int, array<string, mixed>>  $organizers
+     * @return array<int, array<string, mixed>>
      */
-    protected function normalizeOrganizer(mixed $organizer, string $assetBase): ?array
+    protected function normalizeOrganizers(array $organizers, string $assetBase): array
     {
-        if (! is_array($organizer)) {
-            return null;
-        }
+        return array_map(function ($organizer) use ($assetBase) {
+            if (! is_array($organizer)) {
+                return null;
+            }
 
-        if (empty($organizer['image'])) {
+            if (! empty($organizer['image'])) {
+                $organizer['image'] = $this->normalizeAssetUrl(
+                    (string) $organizer['image'],
+                    $assetBase
+                );
+            }
+
             return $organizer;
-        }
-
-        $organizer['image'] = $this->normalizeAssetUrl(
-            (string) $organizer['image'],
-            $assetBase
-        );
-
-        return $organizer;
+        }, $organizers);
     }
 
     /**
@@ -375,7 +376,7 @@ class EventApiClient
                 'type' => $event['event_type'] ?? null,
                 'industry' => $event['industry'] ?? null,
                 'country' => $event['country'] ?? null,
-                'organizer' => $this->normalizeOrganizer($event['organizer'] ?? null, $assetBase),
+                'organizers' => $this->normalizeOrganizers($event['organizers'] ?? [], $assetBase),
                 'venue' => $event['venue'] ?? null,
                 'tags' => $event['tags'] ?? [],
                 'googleMapsUrl' => $event['google_maps_url'] ?? null,

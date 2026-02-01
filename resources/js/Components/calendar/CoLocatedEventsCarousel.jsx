@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Clock, MapPin, CaretLeft, CaretRight } from 'phosphor-react';
 import { useTranslation } from 'react-i18next';
@@ -11,14 +11,25 @@ export default function CoLocatedEventsCarousel({
     const { t } = useTranslation();
     const { language } = useLanguage();
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [visibleCount, setVisibleCount] = useState(3);
+
+    // Handle responsive visible count
+    useEffect(() => {
+        const handleResize = () => {
+            setVisibleCount(window.innerWidth < 640 ? 1 : 3);
+        };
+
+        handleResize();
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     // Early return if no co-located events
     if (!colocatedEvents || colocatedEvents.length === 0) {
         return null;
     }
 
-    // Calculate visible events (3 at a time)
-    const visibleCount = 3;
     const totalPages = Math.ceil(colocatedEvents.length / visibleCount);
     const currentPage = Math.floor(currentIndex / visibleCount);
 
@@ -106,7 +117,7 @@ export default function CoLocatedEventsCarousel({
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -20 }}
                         transition={{ duration: 0.2, ease: 'easeInOut' }}
-                        className="grid gap-2 sm:grid-cols-3"
+                        className="grid grid-cols-1 gap-2 sm:grid-cols-3"
                     >
                         {visibleEvents.map((eventItem) => {
                             const eventStart = eventItem.start_datetime

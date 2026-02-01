@@ -15,7 +15,7 @@ class CalendarController extends Controller
     /**
      * API relationships to include in event responses.
      */
-    private const EVENT_INCLUDES = 'eventStatus,eventType,industry,country,organizer,venue,tags,colocatedEvents';
+    private const EVENT_INCLUDES = 'eventStatus,eventType,industry,country,organizers,venue,tags,colocatedEvents';
 
     public function index(Request $request, EventApiClient $client, LocaleService $localeService): Response
     {

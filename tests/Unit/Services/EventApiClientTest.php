@@ -75,10 +75,12 @@ class EventApiClientTest extends TestCase
                         'start_datetime' => '2024-01-01T10:00:00Z',
                         'end_datetime' => '2024-01-01T12:00:00Z',
                         'images' => ['/storage/images/event1.jpg'],
-                        'organizer' => [
-                            'id' => 1,
-                            'name' => 'Test Organizer',
-                            'image' => '/storage/images/organizer1.jpg',
+                        'organizers' => [
+                            [
+                                'id' => 1,
+                                'name' => 'Test Organizer',
+                                'image' => '/storage/images/organizer1.jpg',
+                            ],
                         ],
                     ],
                 ],
@@ -93,7 +95,7 @@ class EventApiClientTest extends TestCase
         $this->assertArrayHasKey('endDateTime', $event);
         $this->assertArrayHasKey('allDay', $event);
         $this->assertStringContainsString('https://byb-db.test', $event['images'][0]);
-        $this->assertStringContainsString('https://byb-db.test', $event['organizer']['image']);
+        $this->assertStringContainsString('https://byb-db.test', $event['organizers'][0]['image']);
     }
 
     public function test_normalizes_asset_urls(): void
