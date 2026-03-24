@@ -1,6 +1,7 @@
 import { CheckCircle, Users, Clock, ChartBar } from 'phosphor-react';
 import { useTranslation } from 'react-i18next';
-import AnimatedSection, { AnimatedItem } from '@/Components/AnimatedSection';
+import AnimatedSection from '@/Components/AnimatedSection';
+import AnimatedItem from '@/Components/AnimatedItem';
 import StatCard from './StatCard';
 
 export default function StatisticsSection() {

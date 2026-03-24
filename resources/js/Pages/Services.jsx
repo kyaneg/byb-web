@@ -3,7 +3,8 @@ import { useState } from 'react';
 import PublicLayout from '@/Layouts/PublicLayout';
 import { MagnifyingGlass, Calendar, ChartPie } from 'phosphor-react';
 import PageHeader from '@/Components/PageHeader';
-import AnimatedSection, { AnimatedItem } from '@/Components/AnimatedSection';
+import AnimatedSection from '@/Components/AnimatedSection';
+import AnimatedItem from '@/Components/AnimatedItem';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 

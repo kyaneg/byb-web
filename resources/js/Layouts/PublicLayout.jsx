@@ -6,6 +6,10 @@ import { useEffect } from 'react';
 import PageTransition from '@/Components/PageTransition';
 import LanguageSwitcher from '@/Components/LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
+import NavLink from '@/Components/layout/NavLink';
+import MobileNavLink from '@/Components/layout/MobileNavLink';
+import ContactItem from '@/Components/layout/ContactItem';
+import FooterLink from '@/Components/layout/FooterLink';
 
 // Import Lenis hook to access smooth scroll functionality
 // useLenis: Hook that provides access to the Lenis instance
@@ -266,68 +270,5 @@ export default function PublicLayout({ children }) {
                 <CaretUp size={24} weight="bold" />
             </button>
         </div>
-    );
-}
-
-function NavLink({ href, active, children }) {
-    return (
-        <Link
-            href={href}
-            className={`inline-flex items-center text-center text-base font-medium leading-5 transition duration-150 ease-in-out focus:outline-none ${active
-                ? 'text-blue-600 lg:bg-blue-600/10 lg:px-3 lg:py-2 lg:rounded-md transition-all ease-in-out'
-                : 'text-slate-600 hover:text-blue-600 lg:px-3'
-                }`}
-        >
-            {children}
-        </Link>
-    );
-}
-
-function MobileNavLink({ href, active, onClick, children }) {
-    return (
-        <Link
-            href={href}
-            onClick={onClick}
-            className={`block py-3 px-4 rounded-xl text-sm font-medium uppercase tracking-wide transition-colors ${active
-                ? 'bg-blue-600 text-white hover:text-white'
-                : 'text-slate-600 hover:bg-gray-50'
-                }`}
-        >
-            {children}
-        </Link>
-    );
-}
-
-function ContactItem({ icon: Icon, text, href }) {
-    return (
-        <div className="flex items-start gap-3 text-slate-400 group cursor-default">
-            <Icon size={18} weight="bold" className="text-blue-600 mt-0.5 shrink-0" />
-            {href ? (
-                <a href={href} className="leading-tight text-slate-300 hover:text-blue-400 transition-colors">
-                    {text}
-                </a>
-            ) : (
-                <span className="leading-tight text-slate-300">{text}</span>
-            )}
-        </div>
-    );
-}
-
-function FooterLink({ href, className = "", children }) {
-    const isExternal = href.startsWith('http');
-    const classes = `text-white hover:text-indigo-400 text-md font-medium transition-colors ${className}`;
-
-    return (
-        <li>
-            {isExternal ? (
-                <a href={href} className={classes} target="_blank" rel="noopener noreferrer">
-                    {children}
-                </a>
-            ) : (
-                <Link href={href} className={classes}>
-                    {children}
-                </Link>
-            )}
-        </li>
     );
 }

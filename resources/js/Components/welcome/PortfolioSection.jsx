@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { FolderOpen } from 'phosphor-react';
-import AnimatedSection, { AnimatedItem } from '@/Components/AnimatedSection';
+import AnimatedSection from '@/Components/AnimatedSection';
+import AnimatedItem from '@/Components/AnimatedItem';
 import PortfolioCard from './PortfolioCard';
 import EmptyState from '@/Components/EmptyState';
 

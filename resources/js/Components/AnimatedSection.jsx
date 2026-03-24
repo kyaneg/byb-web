@@ -48,16 +48,3 @@ export default function AnimatedSection({
         </MotionComponent>
     );
 }
-
-export function AnimatedItem({ children, className = "", as = "div" }) {
-    const MotionComponent = motion[as] || motion.div;
-
-    return (
-        <MotionComponent
-            className={className}
-            variants={itemVariants}
-        >
-            {children}
-        </MotionComponent>
-    );
-}

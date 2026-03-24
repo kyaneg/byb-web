@@ -1,6 +1,7 @@
 import { PaintBrush, Wrench, ChartBar } from 'phosphor-react';
 import { useTranslation } from 'react-i18next';
-import AnimatedSection, { AnimatedItem } from '@/Components/AnimatedSection';
+import AnimatedSection from '@/Components/AnimatedSection';
+import AnimatedItem from '@/Components/AnimatedItem';
 import ServiceCard from './ServiceCard';
 
 export default function ServicesSection() {
