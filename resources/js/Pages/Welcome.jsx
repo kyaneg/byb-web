@@ -10,7 +10,7 @@ import WorkingProcessSection from '@/Components/welcome/WorkingProcessSection';
 
 const CONSULTATION_BG_IMG = '/images/consultation_bg.png';
 
-export default function Welcome({ portfolios = [] }) {
+export default function Welcome() {
     const { t } = useTranslation();
 
     return (
@@ -20,11 +20,7 @@ export default function Welcome({ portfolios = [] }) {
             <HeroSection />
 
             <ServicesSection />
-
-            {portfolios.length >= 3 && (
-                <PortfolioSection portfolios={portfolios} />
-            )}
-
+            
             <StatisticsSection />
 
             <CTABanner

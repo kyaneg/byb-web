@@ -70,7 +70,7 @@ export default function PublicLayout({ children }) {
          * - This prevents unnecessary re-renders (important since this runs ~60fps)
          */
         const shouldShow = scroll > 400;
-        
+
         // Only update state if the value actually changed
         // This prevents unnecessary re-renders during scrolling
         if (shouldShow !== prevShowScrollTop.current) {
@@ -115,10 +115,11 @@ export default function PublicLayout({ children }) {
 
                         </div>
                         {/* Desktop Navigation */}
-                        <div className="hidden lg:flex items-center gap-6">
+                        <div className="hidden lg:flex items-center gap-4">
                             <NavLink href="/" active={route().current('welcome')}>{t('common.home')}</NavLink>
                             <NavLink href="/calendar" active={route().current('calendar.index')}>{t('common.exhibitionsCalendar')}</NavLink>
                             <NavLink href="/about" active={route().current('about')}>{t('common.about')}</NavLink>
+                            <NavLink href="/portfolio" active={route().current('portfolio')}>{t('common.portfolio')}</NavLink>
                             <NavLink href="/contact" active={route().current('contact')}>{t('common.contact')}</NavLink>
                         </div>
 
@@ -138,9 +139,9 @@ export default function PublicLayout({ children }) {
                                     <span className="text-sm font-medium text-slate-900 leading-tight">{t('common.freeConsultation')}</span>
                                 </div>
                             </a>
-                            <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-md text-xs transition-all uppercase tracking-wide">
+                            <a href='/contact' className="bg-blue-600 text-white hover:text-white font-medium px-6 py-3 rounded-md text-xs transition-all uppercase tracking-wide">
                                 {t('common.buildYourBooth')}
-                            </button>
+                            </a>
                         </div>
 
                         {/* Mobile Menu Toggle */}
@@ -166,6 +167,7 @@ export default function PublicLayout({ children }) {
                             <MobileNavLink href="/" active={route().current('welcome')} onClick={() => setMobileMenuOpen(false)}>{t('common.home')}</MobileNavLink>
                             <MobileNavLink href="/calendar" active={route().current('calendar.index')} onClick={() => setMobileMenuOpen(false)}>{t('common.exhibitionsCalendar')}</MobileNavLink>
                             <MobileNavLink href="/about" active={route().current('about')} onClick={() => setMobileMenuOpen(false)}>{t('common.aboutUs')}</MobileNavLink>
+                            <MobileNavLink href="/portfolio" active={route().current('portfolio')} onClick={() => setMobileMenuOpen(false)}>{t('common.portfolio')}</MobileNavLink>
                             <MobileNavLink href="/contact" active={route().current('contact')} onClick={() => setMobileMenuOpen(false)}>{t('common.contact')}</MobileNavLink>
                             <div className="px-4">
                                 <LanguageSwitcher />
@@ -228,7 +230,7 @@ export default function PublicLayout({ children }) {
                             </div>
                             <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-5">
                                 <FooterLink href="/calendar">{t('common.exhibitionsCalendar')}</FooterLink>
-                                <FooterLink href="#">{t('common.portfolio')}</FooterLink>
+                                <FooterLink href="/portfolio">{t('common.portfolio')}</FooterLink>
                                 <FooterLink href="/about">{t('common.aboutUs')}</FooterLink>
                                 <FooterLink href="/contact">{t('common.contactUs')}</FooterLink>
                             </ul>
@@ -272,8 +274,8 @@ function NavLink({ href, active, children }) {
         <Link
             href={href}
             className={`inline-flex items-center text-center text-base font-medium leading-5 transition duration-150 ease-in-out focus:outline-none ${active
-                ? 'text-blue-600 lg:bg-blue-600/10 lg:px-4 lg:py-2 lg:rounded-md transition-all ease-in-out'
-                : 'text-slate-600 hover:text-blue-600 lg:px-4'
+                ? 'text-blue-600 lg:bg-blue-600/10 lg:px-3 lg:py-2 lg:rounded-md transition-all ease-in-out'
+                : 'text-slate-600 hover:text-blue-600 lg:px-3'
                 }`}
         >
             {children}

@@ -15,20 +15,7 @@ class WelcomeController extends Controller
     {
         $locale = $localeService->resolveFromRequest($request);
 
-        $portfolios = $client->fetchPortfolios([
-            'limit' => 3,
-            'locale' => $locale,
-            'include' => 'industry',
-        ], $locale);
-
-        Log::channel('api')->info('Portfolios fetched for welcome page', [
-            'count' => count($portfolios),
-            'locale' => $locale,
-            'ip' => $request->ip(),
-        ]);
-
         return Inertia::render('Welcome', [
-            'portfolios' => $portfolios,
             'locale' => $locale,
         ]);
     }

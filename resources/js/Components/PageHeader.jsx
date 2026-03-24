@@ -6,7 +6,7 @@ import { useLanguage } from '@/Contexts/LanguageContext';
 export default function PageHeader({ title, subtitle, description, breadcrumbs }) {
     const { t } = useTranslation();
     const { isRTL } = useLanguage();
-    
+
     // Generate breadcrumbs dynamically if not provided
     const generateBreadcrumbs = () => {
         if (breadcrumbs) {
@@ -24,6 +24,7 @@ export default function PageHeader({ title, subtitle, description, breadcrumbs }
         const routeLabels = {
             'calendar.index': t('common.exhibitionsCalendar'),
             'about': t('common.about'),
+            'portfolio': t('common.portfolio'),
             'contact': t('common.contact'),
             'services': t('common.services'),
             'welcome': t('common.home'),

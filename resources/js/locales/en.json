@@ -162,6 +162,12 @@
     "ctaDescription": "Not sure which booth solution is right for you? Our expert team is here to help. Schedule a free consultation and discover how we can bring your exhibition vision to life.",
     "ctaButton": "START CONSULTATION"
   },
+  "portfolio": {
+    "title": "Our Portfolio",
+    "pageTitle": "Previous Projects",
+    "subtitle": "Our Story",
+    "description": "Discover a collection of our successful projects that showcase our creativity and expertise in booth building."
+  },
   "contact": {
     "title": "Contact Us",
     "pageTitle": "Contact Us",
