@@ -1,0 +1,1 @@
+import{j as a}from"./app-BccTM-ek.js";import{m as i}from"./PublicLayout-CeeKG8u7.js";const m={type:"spring",stiffness:400,damping:80,mass:1},r={hidden:{opacity:0,y:30},visible:{opacity:1,y:0,transition:m}};function c({children:t,className:n="",as:o="div"}){const s=i[o]||i.div;return a.jsx(s,{className:n,variants:r,children:t})}export{c as A};
